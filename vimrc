@@ -34,13 +34,11 @@ set textwidth=79
 set nowrap
 set fo-=t  " Don't wrap while typing
 set colorcolumn=80
-"highlight ColorColumn ctermbg=white
 
 "set statusline=%<%F\ %m%r\ %=%-14.(%l,%c%V%)\ %P
 set statusline=%<%F\ %y%m%r\ %=%-14.(%l,%c%V%)\ %P
 
 " Show trailing whitespace
-"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Visualizing trailing whitespace
@@ -114,7 +112,7 @@ map <C-k> <C-W>k<C-W>_
 map <C-SPACE> zc
 
 nnoremap <C-l> :set background=light<CR>
-nnoremap <C-b> :set background=dark<CR>
+nnoremap <C-k> :set background=dark<CR>
 
 set winminheight=0
 set tags=tags;/
