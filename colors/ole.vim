@@ -2,7 +2,7 @@
 " Author: Oliver Lemke <olemke@core-dump.net>
 "
 " Created: 2001-12-05
-" Last Change: 2004-04-05 19:54:23 +0200
+" Last Change: 2013-06-01
 "
 
 hi clear
@@ -29,9 +29,11 @@ if &background == "dark"
   hi Marking     guifg=yellow     gui=bold      guibg=white
   hi TODO        guifg=red        gui=bold      guibg=yellow
   hi Special     guifg=lightblue  gui=bold
-  hi SpecialChar guifg=lightblue  gui=bold 
+  hi SpecialChar guifg=lightblue  gui=bold
   hi Visual      guifg=black      gui=bold      guibg=grey
   hi Cursor      guifg=black      gui=bold      guibg=white
+  hi ColorColumn guifg=white ctermbg=black     gui=none      guibg=#444444
+  hi ExtraWhitespace guifg=white  gui=none      guibg=#880000
 else
   hi normal      guifg=black      gui=none      guibg=#EEEEEE
   hi Comment     guifg=darkgreen  gui=none
@@ -49,7 +51,9 @@ else
   hi Marking     guifg=black      gui=bold      guibg=grey
   hi TODO        guifg=yellow     gui=bold      guibg=red
   hi Special     guifg=darkblue   gui=bold
-  hi SpecialChar guifg=darkblue   gui=bold 
+  hi SpecialChar guifg=darkblue   gui=bold
+  hi ColorColumn guifg=black   ctermbg=white   gui=none      guibg=#CCCCCC
+  hi ExtraWhitespace guifg=black  gui=none      guibg=#FFAAAA
 endif
 
 

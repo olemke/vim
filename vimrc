@@ -1,22 +1,63 @@
+" Automatically reload .vimrc
+autocmd! bufwritepost .vimrc source %
 
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
 set showcmd
 set nocompatible
+
 set nobackup
+set nowritebackup
+set noswapfile
+
 "set backup
 "set backupdir=~/bak
+"set clipboard=unnamed
 set backspace=2
 set visualbell
 set ruler
 set laststatus=2
-set statusline=%<%F\ %m%r\ %=%-14.(%l,%c%V%)\ %P
-" Show filetype in statusline
-"set statusline=%<%F\ %y%m%r\ %=%-14.(%l,%c%V%)\ %P
-" Use mouse wheel
-"set mouse=a
+
+" Add leader for more shortcuts
+let mapleader = ","
+
+" Toggle paste mode
+nmap <Leader>p :set invpaste<CR>
+
+" Show/hide line numbers
+nmap <Leader>n :set invnumber<CR>
+
+set textwidth=79
+set nowrap
+set fo-=t  " Don't wrap while typing
+set colorcolumn=80
+"highlight ColorColumn ctermbg=white
+
+"set statusline=%<%F\ %m%r\ %=%-14.(%l,%c%V%)\ %P
+set statusline=%<%F\ %y%m%r\ %=%-14.(%l,%c%V%)\ %P
+
+" Show trailing whitespace
+"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
+
+" Visualizing trailing whitespace
+nmap <M-n> :set hls<CR>/\s\+$<CR>
+" Visualizing tabs
+nmap <M-m> :set hls<CR>/\s\t<CR>
+
+set mouse=a
+"set mousemodel=popup
+
+vnoremap <Leader>s :sort<CR>
+
+" keep selection when indenting blocks
+vnoremap < <gv
+vnoremap > >gv
+
+
 
 " wildmenu!  this makes use of the command lien to show
 " possible macthes on buffernames and filenames - yay!
@@ -24,71 +65,35 @@ if version>=508
   set wildmenu
 endif
 
-"
-" ===================================================================
-" VIM - Editing and updating the vimrc:
-" As I often make changes to this file I use these commands
-" to start editing it and also update it:
-" ===================================================================
-"
-if has("unix")
-  let vimrc='~/.vimrc'
-else
-" ie:  if has("dos16") || has("dos32") || has("win32")
-  let vimrc='$VIM\_vimrc'
-endif
-nmap  ,u :source <C-R>=vimrc<CR><CR>
-nmap  ,v :edit   <C-R>=vimrc<CR><CR>
-
-"
-" ===================================================================
 " Activate my own color scheme
-" ===================================================================
-"
 if version>=600
+  set t_Co=256
+"  colorscheme solarized
   colorscheme ole
+" colorscheme default
 endif
 
-" colorscheme default
 
 "
 " ===================================================================
 " File type detection and settings
 " ===================================================================
 "
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
+filetype off
+call pathogen#infect()
+call pathogen#helptags()
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  if version>=600
-    filetype plugin indent on
-  endif
+filetype plugin indent on
+syntax on
 
-  au BufRead /tmp/mutt* normal :g/^> -- $/,/^$/-1d
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") | 
-    \   exe "normal g`\"" |
-    \ endif
-
-endif
-
-"
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-"
-if &t_Co > 2 || has("gui_running")
-  "let c_space_errors=1
-  syntax on
-  set hlsearch
-endif
-
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
 
 nnoremap <C-N> :nohls<CR>
 nnoremap <silent> <F8> :Tlist<CR>
@@ -101,11 +106,6 @@ map <S-TAB> vipgq<CR>
 map! <C-D> <C-R>=strftime("%F")<CR>
 map! <C-T> <C-R>=strftime("%F %H:%M:%S %z")<CR>
 
-" Visualizing trailing whitespace
-nmap <M-n> :set hls<CR>/\s\+$<CR>
-" Visualizing tabs
-nmap <M-m> :set hls<CR>/\s\t<CR>
-
 "
 " Set mapping to be able to move through windows with default keys
 "
@@ -116,15 +116,14 @@ map <C-SPACE> zc
 nnoremap <C-l> :set background=light<CR>
 nnoremap <C-b> :set background=dark<CR>
 
-set wmh=0
-set tags=tags;/ 
+set winminheight=0
+set tags=tags;/
 
 "
 " ScreenShot plugin config
 "
-let ScreenShot = {'Icon':0, 'Credits':0} 
+let ScreenShot = {'Icon':0, 'Credits':0}
 
-set mousemodel=popup
 
 set spelllang=en_us
 
@@ -140,26 +139,54 @@ autocmd FileType c,cpp setlocal expandtab shiftwidth=2 tabstop=2 textwidth=80
 "let g:miniBufExplMapCTabSwitchBufs = 1
 "let g:miniBufExplModSelTarget = 1
 
-set ofu=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 
 " turn on syntax coloring:
 syntax on
 
 let g:html_number_lines = 1
 
+" Settings for python-mode
+map <Leader>g :call RopeGotoDefinition()<CR>
+let ropevim_enable_shortcuts = 1
+let g:pymode_rope_goto_def_newwin = "vnew"
+let g:pymode_rope_guess_project = 0
+let g:pymode_rope_extended_complete = 1
+let g:pymode_breakpoint = 0
+let g:pymode_syntax = 1
+let g:pymode_syntax_builtin_objs = 0
+let g:pymode_syntax_builtin_funcs = 0
+let g:pymode_lint_checker = "pyflakes,pep8"
+
 let g:pymode_folding = 1
 let g:pymode_virtualenv = 1
 
+" Omnicomplete list navigation with j+k
+set completeopt=longest,menuone
+function! OmniPopup(action)
+  if pumvisible()
+    if a:action == 'j'
+      return "\<C-N>"
+    elseif a:action == 'k'
+      return "\<C-P>"
+    endif
+  endif
+  return a:action
+endfunction
+
+inoremap <silent>j <C-R>=OmniPopup('j')<CR>
+inoremap <silent>k <C-R>=OmniPopup('k')<CR>
 
 "au BufRead  *.py set foldmethod=indent
 "au BufRead  *.py set foldignore="#"
 
-set foldmethod=indent
-set foldlevel=99
+"set foldmethod=indent
+"set foldlevel=99
+set nofoldenable
 
 " Function to activate a virtualenv in the embedded interpreter for
 " omnicomplete and other things like that.
-function LoadVirtualEnv(path)
+function! LoadVirtualEnv(path)
     let activate_this = a:path . '/bin/activate_this.py'
     if getftype(a:path) == "dir" && filereadable(activate_this)
         python << EOF
@@ -180,5 +207,4 @@ if has("python")
         call LoadVirtualEnv(defaultvirtualenv)
     endif
 endif
-
 

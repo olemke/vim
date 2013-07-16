@@ -1,9 +1,11 @@
 setlocal noexpandtab
 setlocal tabstop=8
-setlocal textwidth=78
+setlocal textwidth=79
 setlocal autoindent
 
 set background=dark
+
+set spell
 
 "
 " <CTRL-H> for adding a new ChangeLog entry
