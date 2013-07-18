@@ -111,8 +111,7 @@ map <C-j> <C-W>j<C-W>_
 map <C-k> <C-W>k<C-W>_
 map <C-SPACE> zc
 
-nnoremap <C-l> :set background=light<CR>
-nnoremap <C-k> :set background=dark<CR>
+call togglebg#map("<C-l>")
 
 set winminheight=0
 set tags=tags;/
