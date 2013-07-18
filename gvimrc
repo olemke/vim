@@ -16,10 +16,10 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=R
 
-if &background == "dark"                                                   
-  let g:solarized_contrast = "normal"                                       
-else                                                                        
-  let g:solarized_contrast = "high""                                        
-endif                                                                       
-
+if &background == "dark"
+  let g:solarized_contrast = "normal"
+else
+  let g:solarized_contrast = "high"
+endif
 colorscheme solarized
+

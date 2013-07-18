@@ -28,12 +28,12 @@ noremap <SID>TogBG  :call <SID>TogBG()<CR>
 function! s:TogBG()
     let &background = ( &background == "dark"? "light" : "dark" )
     if exists("g:colors_name")
-        exe "colorscheme " . g:colors_name
-    endif
-    if &background == "light"
-      let g:solarized_contrast = "normal"
-    else
-      let g:solarized_contrast = "high""
+      if &background == "dark"
+        let g:solarized_contrast = "normal"
+      else
+        let g:solarized_contrast = "high"
+      endif
+      exe "colorscheme " . g:colors_name
     endif
 endfunction
 
