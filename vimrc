@@ -33,7 +33,9 @@ nmap <Leader>n :set invnumber<CR>
 set textwidth=79
 set nowrap
 set fo-=t  " Don't wrap while typing
-set colorcolumn=80
+if version>=730
+  set colorcolumn=80
+endif
 
 "set statusline=%<%F\ %m%r\ %=%-14.(%l,%c%V%)\ %P
 set statusline=%<%F\ %y%m%r\ %=%-14.(%l,%c%V%)\ %P
