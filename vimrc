@@ -11,7 +11,7 @@ set nocompatible
 
 set nobackup
 set nowritebackup
-set noswapfile
+"set noswapfile
 
 "set backup
 "set backupdir=~/bak
