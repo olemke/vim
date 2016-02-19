@@ -11,15 +11,18 @@ set nocompatible
 
 set nobackup
 set nowritebackup
-"set noswapfile
+" set noswapfile
 
-"set backup
-"set backupdir=~/bak
-"set clipboard=unnamed
+" set backup
+" set backupdir=~/bak
+" set clipboard=unnamed
 set backspace=2
 set visualbell
 set ruler
 set laststatus=2
+
+" Map jj to ESC
+imap jj <ESC>
 
 " Add leader for more shortcuts
 let mapleader = ","
@@ -178,10 +181,10 @@ endfunction
 inoremap <silent>j <C-R>=OmniPopup('j')<CR>
 inoremap <silent>k <C-R>=OmniPopup('k')<CR>
 
-"au BufRead  *.py set foldmethod=indent
-"au BufRead  *.py set foldignore="#"
+" au BufRead  *.py set foldmethod=indent
+" au BufRead  *.py set foldignore="#"
 
-"set foldmethod=indent
-"set foldlevel=99
+" set foldmethod=indent
+" set foldlevel=99
 set nofoldenable
 
