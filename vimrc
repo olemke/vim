@@ -22,7 +22,7 @@ set ruler
 set laststatus=2
 
 " Map jj to ESC
-imap jj <ESC>
+imap jj <ESC>l
 
 " Add leader for more shortcuts
 let mapleader = ","
