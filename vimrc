@@ -1,6 +1,8 @@
 " Automatically reload .vimrc
 autocmd! bufwritepost .vimrc source %
 
+execute pathogen#infect()
+
 set hlsearch
 set incsearch
 set ignorecase
@@ -190,4 +192,8 @@ inoremap <silent>k <C-R>=OmniPopup('k')<CR>
 " set foldmethod=indent
 " set foldlevel=99
 set nofoldenable
+
+" Open NERDTree automatically if no file given
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
