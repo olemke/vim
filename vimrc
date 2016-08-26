@@ -121,6 +121,11 @@ set winminheight=0
 set tags=tags;/
 
 "
+" Enable wildmenu for well-arranged completion lists
+set wildmenu
+set wildmode=list:longest,full
+
+"
 " ScreenShot plugin config
 "
 let ScreenShot = {'Icon':0, 'Credits':0}
