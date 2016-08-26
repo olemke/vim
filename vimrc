@@ -191,6 +191,12 @@ endfunction
 inoremap <silent>j <C-R>=OmniPopup('j')<CR>
 inoremap <silent>k <C-R>=OmniPopup('k')<CR>
 
+"
+" Remap some keys to keep cursor centered while scrolling
+"
+nnoremap <C-j> jzz
+nnoremap <C-k> kzz
+
 " au BufRead  *.py set foldmethod=indent
 " au BufRead  *.py set foldignore="#"
 
