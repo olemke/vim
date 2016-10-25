@@ -214,10 +214,23 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:syntastic_python_checkers = ['python', 'flake8']
+let g:syntastic_python_flake8_args = "-j4"
+
 " Autopep8 settings
 let g:autopep8_aggressive=2
+
+" Jedi settings
+let g:jedi#use_splits_not_buffers = "winwidth"
+
+set diffopt+=vertical
+
+"nnoremap <C-j> <C-W>j
+"nnoremap <C-k> <C-W>k
+"nnoremap <C-l> <C-W>l
+"nnoremap <C-h> <C-W>h
 
