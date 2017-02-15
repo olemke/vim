@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language: ARTS
 " Maintainer: via update-vim-arts-syntax script
-" Latest Revision: Tue 28 Jun 2016 08:41:49 CEST
+" Latest Revision: Mon 6 Feb 2017 13:39:35 CET
 if exists("b:current_syntax")
   finish
 endif
@@ -17,11 +17,17 @@ hi def link ArtsString Statement
 let b:current_syntax = "arts"
 
 " definition of comments
-syn match ArtsComment "#.*$" 
+syn match ArtsComment "#.*$"
 setlocal commentstring=#\ %s
 
-" definition of numbers
-syn match ArtsNumber '\W[-+]\=\d\+\(\.\d*\)\=\([eE][-+]\=\d\+\)\='
+" definition of numbers. Taken from the Python synatx highlighting:
+" https://github.com/hdima/python-syntax/blob/master/syntax/python.vim#L392
+syn match ArtsNumber "\<\d[lL]\=\>" display
+syn match ArtsNumber "\<[0-9]\d\+[lL]\=\>" display
+syn match ArtsNumber "\<\d\+[lLjJ]\>" display
+syn match ArtsNumber "\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>" display
+syn match ArtsNumber "\<\d\+[eE][+-]\=\d\+[jJ]\=\>" display
+syn match ArtsNumber "\<\d\+\.\d*\%([eE][+-]\=\d\+\)\=[jJ]\=" display
 
 " definition of strings
 syn region ArtsString start='"' end='"'
@@ -115,8 +121,7 @@ syn keyword ArtsMethod abs_linesReplaceWithLines
 syn keyword ArtsMethod abs_linesReplaceParameterWithLinesParameter
 syn keyword ArtsMethod abs_linesSetParameterForMatchingLines
 syn keyword ArtsMethod abs_linesShiftFrequency
-syn keyword ArtsMethod abs_lines_per_bandInit
-syn keyword ArtsMethod abs_lines_per_bandLineMixingAppendCO2
+syn keyword ArtsMethod abs_lines_per_bandFromband_identifiers
 syn keyword ArtsMethod abs_lines_per_speciesAddMirrorLines
 syn keyword ArtsMethod abs_lines_per_speciesCompact
 syn keyword ArtsMethod abs_lines_per_speciesCreateFromLines
@@ -142,6 +147,7 @@ syn keyword ArtsMethod abs_vecAddGas
 syn keyword ArtsMethod abs_vecAddPart
 syn keyword ArtsMethod abs_vecInit
 syn keyword ArtsMethod abs_xsec_agenda_checkedCalc
+syn keyword ArtsMethod abs_xsec_per_speciesAddLineMixedBands
 syn keyword ArtsMethod abs_xsec_per_speciesAddCIA
 syn keyword ArtsMethod abs_xsec_per_speciesAddConts
 syn keyword ArtsMethod abs_xsec_per_speciesAddLines
@@ -156,6 +162,7 @@ syn keyword ArtsMethod AntennaOff
 syn keyword ArtsMethod antenna_responseGaussian
 syn keyword ArtsMethod antenna_responseVaryingGaussian
 syn keyword ArtsMethod Append
+syn keyword ArtsMethod ArrayOfGriddedFieldGetNames
 syn keyword ArtsMethod ArrayOfIndexLinSpace
 syn keyword ArtsMethod ArrayOfIndexSet
 syn keyword ArtsMethod ArrayOfIndexSetConstant
@@ -166,6 +173,7 @@ syn keyword ArtsMethod AtmFieldPRegrid
 syn keyword ArtsMethod AtmFieldsCalc
 syn keyword ArtsMethod AtmFieldsCalcExpand1D
 syn keyword ArtsMethod AtmFieldsExpand1D
+syn keyword ArtsMethod AtmFieldsExtract1D
 syn keyword ArtsMethod AtmFieldsRefinePgrid
 syn keyword ArtsMethod AtmFieldsFromCompact
 syn keyword ArtsMethod atmfields_checkedCalc
@@ -190,7 +198,7 @@ syn keyword ArtsMethod CIAInfo
 syn keyword ArtsMethod CIARecordReadFromFile
 syn keyword ArtsMethod cloudboxOff
 syn keyword ArtsMethod cloudboxSetAutomatically
-syn keyword ArtsMethod cloudboxSetDisort
+syn keyword ArtsMethod cloudboxSetFullAtm
 syn keyword ArtsMethod cloudboxSetManually
 syn keyword ArtsMethod cloudboxSetManuallyAltitude
 syn keyword ArtsMethod cloudbox_checkedCalc
@@ -235,6 +243,8 @@ syn keyword ArtsMethod doit_i_fieldUpdate1D
 syn keyword ArtsMethod doit_i_fieldUpdateSeq1D
 syn keyword ArtsMethod doit_i_fieldUpdateSeq1DPP
 syn keyword ArtsMethod doit_i_fieldUpdateSeq3D
+syn keyword ArtsMethod doit_i_field_monoOptimizeReverse
+syn keyword ArtsMethod OptimizeDoitPressureGrid
 syn keyword ArtsMethod doit_scat_fieldCalc
 syn keyword ArtsMethod doit_scat_fieldCalcLimb
 syn keyword ArtsMethod doit_za_grid_optCalc
@@ -270,12 +280,14 @@ syn keyword ArtsMethod geo_posEndOfPpath
 syn keyword ArtsMethod geo_posLowestAltitudeOfPpath
 syn keyword ArtsMethod geo_posWherePpathPassesZref
 syn keyword ArtsMethod GetEnvironmentVariable
+syn keyword ArtsMethod GriddedFieldGetName
 syn keyword ArtsMethod GriddedFieldLatLonExpand
 syn keyword ArtsMethod GriddedFieldLatLonRegrid
 syn keyword ArtsMethod GriddedFieldPRegrid
 syn keyword ArtsMethod GriddedFieldZToPRegrid
 syn keyword ArtsMethod Ignore
 syn keyword ArtsMethod INCLUDE
+syn keyword ArtsMethod IndexAdd
 syn keyword ArtsMethod IndexSet
 syn keyword ArtsMethod IndexStepDown
 syn keyword ArtsMethod IndexStepUp
@@ -288,6 +300,7 @@ syn keyword ArtsMethod iyCalc
 syn keyword ArtsMethod iyCloudRadar
 syn keyword ArtsMethod iyEmissionStandard
 syn keyword ArtsMethod iyFOS
+syn keyword ArtsMethod iyIndependentBeamApproximation
 syn keyword ArtsMethod iyInterpCloudboxField
 syn keyword ArtsMethod iyInterpPolyCloudboxField
 syn keyword ArtsMethod iyLoopFrequencies
@@ -303,15 +316,17 @@ syn keyword ArtsMethod iy_auxFillParticleVariables
 syn keyword ArtsMethod iy_transmitterMultiplePol
 syn keyword ArtsMethod iy_transmitterSinglePol
 syn keyword ArtsMethod jacobianAddAbsSpecies
+syn keyword ArtsMethod jacobianAddConstantVMRAbsSpecies
+syn keyword ArtsMethod jacobianAddBeamFlux
 syn keyword ArtsMethod jacobianAddCatalogParameter
 syn keyword ArtsMethod jacobianAddCatalogParameters
 syn keyword ArtsMethod jacobianAddFreqShift
 syn keyword ArtsMethod jacobianAddFreqStretch
+syn keyword ArtsMethod jacobianAddMagField
 syn keyword ArtsMethod jacobianAddPointingZa
 syn keyword ArtsMethod jacobianAddPolyfit
 syn keyword ArtsMethod jacobianAddSinefit
-syn keyword ArtsMethod jacobianAddMagField
-syn keyword ArtsMethod jacobianAddBeamFlux
+syn keyword ArtsMethod jacobianAddSpecialSpecies
 syn keyword ArtsMethod jacobianAddTemperature
 syn keyword ArtsMethod jacobianAddWind
 syn keyword ArtsMethod jacobianAdjustAfterIteration
@@ -330,9 +345,8 @@ syn keyword ArtsMethod jacobianCalcTemperaturePerturbations
 syn keyword ArtsMethod jacobianCalcWindAnalytical
 syn keyword ArtsMethod jacobianClose
 syn keyword ArtsMethod jacobianDoit
-syn keyword ArtsMethod jacobianDO
-syn keyword ArtsMethod jacobianDOAddSpecies
-syn keyword ArtsMethod jacobianDOClose
+syn keyword ArtsMethod jacobianDoitAddSpecies
+syn keyword ArtsMethod jacobianDoitClose
 syn keyword ArtsMethod jacobianInit
 syn keyword ArtsMethod jacobianOff
 syn keyword ArtsMethod lat_gridFromRawField
@@ -352,6 +366,7 @@ syn keyword ArtsMethod MatrixScale
 syn keyword ArtsMethod MatrixSet
 syn keyword ArtsMethod MatrixSetConstant
 syn keyword ArtsMethod MatrixUnitIntensity
+syn keyword ArtsMethod MatrixVectorMultiply
 syn keyword ArtsMethod Matrix1ColFromVector
 syn keyword ArtsMethod Matrix2ColFromVectors
 syn keyword ArtsMethod Matrix3ColFromVectors
@@ -362,6 +377,7 @@ syn keyword ArtsMethod mc_antennaSetGaussian
 syn keyword ArtsMethod mc_antennaSetGaussianByFWHM
 syn keyword ArtsMethod mc_antennaSetPencilBeam
 syn keyword ArtsMethod MCGeneral
+syn keyword ArtsMethod MCRadar
 syn keyword ArtsMethod MCSetSeedFromTime
 syn keyword ArtsMethod NumericAdd
 syn keyword ArtsMethod NumericInvScale
@@ -379,6 +395,7 @@ syn keyword ArtsMethod nlte_sourceFromTemperatureAndSrcCoefPerSpecies
 syn keyword ArtsMethod nlteOff
 syn keyword ArtsMethod nlteSetByQuantumIdentifiers
 syn keyword ArtsMethod OEM
+syn keyword ArtsMethod OEM_MPI
 syn keyword ArtsMethod opt_prop_sptFromData
 syn keyword ArtsMethod opt_prop_sptFromMonoData
 syn keyword ArtsMethod output_file_formatSetAscii
@@ -438,6 +455,9 @@ syn keyword ArtsMethod refr_index_airFreeElectrons
 syn keyword ArtsMethod refr_index_airInfraredEarth
 syn keyword ArtsMethod refr_index_airMicrowavesEarth
 syn keyword ArtsMethod refr_index_airMicrowavesGeneral
+syn keyword ArtsMethod RT4Calc
+syn keyword ArtsMethod RT4Init
+syn keyword ArtsMethod RT4Test
 syn keyword ArtsMethod rte_losGeometricFromRtePosToRtePos2
 syn keyword ArtsMethod rte_losSet
 syn keyword ArtsMethod rte_posSet
@@ -478,7 +498,7 @@ syn keyword ArtsMethod sensor_responseWMRF
 syn keyword ArtsMethod SparseSparseMultiply
 syn keyword ArtsMethod SparseMatrixIdentity
 syn keyword ArtsMethod specular_losCalc
-syn keyword ArtsMethod StringCompose
+syn keyword ArtsMethod StringJoin
 syn keyword ArtsMethod StringSet
 syn keyword ArtsMethod surfaceBlackbody
 syn keyword ArtsMethod surfaceFastem
@@ -486,10 +506,13 @@ syn keyword ArtsMethod surfaceFlatRefractiveIndex
 syn keyword ArtsMethod surfaceFlatReflectivity
 syn keyword ArtsMethod surfaceFlatScalarReflectivity
 syn keyword ArtsMethod surfaceLambertianSimple
+syn keyword ArtsMethod surfaceSemiSpecularBy3beams
+syn keyword ArtsMethod surfaceSplitSpecularTo3beams
 syn keyword ArtsMethod surface_complex_refr_indexFromGriddedField5
 syn keyword ArtsMethod surface_reflectivityFromGriddedField6
 syn keyword ArtsMethod surface_rtpropCallSubAgendaX
 syn keyword ArtsMethod surface_scalar_reflectivityFromGriddedField4
+syn keyword ArtsMethod surface_scalar_reflectivityFromSurface_rmatrix
 syn keyword ArtsMethod surface_typeInterpTypeMask
 syn keyword ArtsMethod TangentPointExtract
 syn keyword ArtsMethod TangentPointPrint
@@ -506,6 +529,7 @@ syn keyword ArtsMethod Tensor6SetConstant
 syn keyword ArtsMethod Tensor7Scale
 syn keyword ArtsMethod Tensor7SetConstant
 syn keyword ArtsMethod Test
+syn keyword ArtsMethod TestScatDataInterp
 syn keyword ArtsMethod timerStart
 syn keyword ArtsMethod timerStop
 syn keyword ArtsMethod TMatrixTest
@@ -545,7 +569,8 @@ syn keyword ArtsMethod WriteNetCDF
 syn keyword ArtsMethod WriteNetCDFIndexed
 syn keyword ArtsMethod WriteXML
 syn keyword ArtsMethod WriteXMLIndexed
-syn keyword ArtsMethod x2arts_std
+syn keyword ArtsMethod xaStandard
+syn keyword ArtsMethod x2artsStandard
 syn keyword ArtsMethod yApplySensorPol
 syn keyword ArtsMethod yApplyUnit
 syn keyword ArtsMethod ybatchCalc
@@ -580,6 +605,7 @@ syn keyword ArtsVariable abs_t_interp_order
 syn keyword ArtsVariable abs_lookup_is_adapted
 syn keyword ArtsVariable abs_p
 syn keyword ArtsVariable abs_species
+syn keyword ArtsVariable abs_species_per_band
 syn keyword ArtsVariable abs_species_active
 syn keyword ArtsVariable abs_t
 syn keyword ArtsVariable abs_t_nlte
@@ -663,6 +689,7 @@ syn keyword ArtsVariable iy_agenda_call1
 syn keyword ArtsVariable iy_aux
 syn keyword ArtsVariable iy_aux_vars
 syn keyword ArtsVariable iy_cloudbox_agenda
+syn keyword ArtsVariable iy_id
 syn keyword ArtsVariable iy_main_agenda
 syn keyword ArtsVariable iy_space_agenda
 syn keyword ArtsVariable iy_sub_agenda
@@ -678,12 +705,10 @@ syn keyword ArtsVariable iy_transmitter_agenda
 syn keyword ArtsVariable iy_unit
 syn keyword ArtsVariable jacobian
 syn keyword ArtsVariable jacobian_agenda
-syn keyword ArtsVariable jacobian_do_agenda
 syn keyword ArtsVariable jacobian_do
-syn keyword ArtsVariable jacobianDO_do
+syn keyword ArtsVariable jacobianDoit_do
 syn keyword ArtsVariable jacobian_indices
 syn keyword ArtsVariable jacobian_quantities
-syn keyword ArtsVariable lambertian_nza
 syn keyword ArtsVariable lat
 syn keyword ArtsVariable lat_grid
 syn keyword ArtsVariable lat_true
@@ -700,13 +725,13 @@ syn keyword ArtsVariable mag_v_field_raw
 syn keyword ArtsVariable mag_w_field
 syn keyword ArtsVariable mag_w_field_raw
 syn keyword ArtsVariable main_agenda
-syn keyword ArtsVariable mblock_aa_grid
 syn keyword ArtsVariable mblock_dlos_grid
 syn keyword ArtsVariable mblock_index
 syn keyword ArtsVariable mc_antenna
 syn keyword ArtsVariable mc_error
 syn keyword ArtsVariable mc_iteration_count
 syn keyword ArtsVariable mc_max_iter
+syn keyword ArtsVariable mc_max_scatorder
 syn keyword ArtsVariable mc_max_time
 syn keyword ArtsVariable mc_min_iter
 syn keyword ArtsVariable mc_points
@@ -714,6 +739,8 @@ syn keyword ArtsVariable mc_scat_order
 syn keyword ArtsVariable mc_source_domain
 syn keyword ArtsVariable mc_seed
 syn keyword ArtsVariable mc_std_err
+syn keyword ArtsVariable mc_y_tx
+syn keyword ArtsVariable mc_taustep_limit
 syn keyword ArtsVariable met_amsu_data
 syn keyword ArtsVariable met_mm_antenna
 syn keyword ArtsVariable met_mm_backend
@@ -734,6 +761,7 @@ syn keyword ArtsVariable nlte_do
 syn keyword ArtsVariable nlte_source
 syn keyword ArtsVariable nlte_source_field
 syn keyword ArtsVariable oem_diagnostics
+syn keyword ArtsVariable oem_errors
 syn keyword ArtsVariable opt_prop_part_agenda
 syn keyword ArtsVariable output_file_format
 syn keyword ArtsVariable particle_masses
@@ -757,6 +785,7 @@ syn keyword ArtsVariable propmat_clearsky_agenda
 syn keyword ArtsVariable propmat_clearsky_agenda_checked
 syn keyword ArtsVariable propmat_clearsky_field
 syn keyword ArtsVariable p_grid
+syn keyword ArtsVariable p_grid_orig
 syn keyword ArtsVariable p_hse
 syn keyword ArtsVariable radiation_field
 syn keyword ArtsVariable range_bins
@@ -765,6 +794,7 @@ syn keyword ArtsVariable refr_index_air_agenda
 syn keyword ArtsVariable refr_index_air_group
 syn keyword ArtsVariable refellipsoid
 syn keyword ArtsVariable relmat_per_band
+syn keyword ArtsVariable rt4_is_initialized
 syn keyword ArtsVariable rte_alonglos_v
 syn keyword ArtsVariable rte_los
 syn keyword ArtsVariable rte_pos
@@ -826,6 +856,7 @@ syn keyword ArtsVariable surface_los
 syn keyword ArtsVariable surface_normal
 syn keyword ArtsVariable surface_rmatrix
 syn keyword ArtsVariable surface_rtprop_agenda
+syn keyword ArtsVariable surface_rtprop_sub_agenda
 syn keyword ArtsVariable surface_rtprop_sub_agenda0
 syn keyword ArtsVariable surface_rtprop_sub_agenda1
 syn keyword ArtsVariable surface_rtprop_sub_agenda2
