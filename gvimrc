@@ -21,5 +21,6 @@ if &background == "dark"
 else
   let g:solarized_contrast = "high"
 endif
-colorscheme solarized
+"colorscheme solarized
+colorscheme darcula
 
