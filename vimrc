@@ -141,6 +141,7 @@ au BufRead,BufNewFile *.arts setfiletype sh
 "autocmd FileType c,cpp setlocal cindent cino=:0,l1,g0,c3,(0,)100,*100
 autocmd FileType c,cpp setlocal cindent cino=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
 autocmd FileType c,cpp setlocal expandtab shiftwidth=2 tabstop=2 textwidth=80
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 textwidth=79
 
 " use autopep8 to correct python files.
 au FileType python setlocal formatprg=autopep8\ -
