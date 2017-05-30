@@ -4,6 +4,7 @@ setlocal textwidth=79
 setlocal autoindent
 
 set background=dark
+colorscheme solarized
 
 set spell
 

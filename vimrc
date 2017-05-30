@@ -74,7 +74,8 @@ endif
 if version>=600
   set t_Co=256
 "  colorscheme solarized
-  colorscheme ole
+"  colorscheme ole
+  colorscheme darcula-ole
 " colorscheme default
 endif
 
