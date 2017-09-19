@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language: ARTS
 " Maintainer: via update-vim-arts-syntax script
-" Latest Revision: Mon 29 May 2017 09:32:45 CEST
+" Latest Revision: Tue 30 May 2017 09:01:24 CEST
 if exists("b:current_syntax")
   finish
 endif
@@ -45,6 +45,7 @@ syn keyword ArtsMethod ArrayOfArrayOfMatrixCreate
 syn keyword ArtsMethod ArrayOfArrayOfScatteringMetaDataCreate
 syn keyword ArtsMethod ArrayOfArrayOfSingleScatteringDataCreate
 syn keyword ArtsMethod ArrayOfArrayOfSpeciesTagCreate
+syn keyword ArtsMethod ArrayOfArrayOfStringCreate
 syn keyword ArtsMethod ArrayOfArrayOfTensor3Create
 syn keyword ArtsMethod ArrayOfArrayOfTensor6Create
 syn keyword ArtsMethod ArrayOfArrayOfVectorCreate
@@ -158,6 +159,7 @@ syn keyword ArtsMethod AgendaExecute
 syn keyword ArtsMethod AgendaExecuteExclusive
 syn keyword ArtsMethod AgendaSet
 syn keyword ArtsMethod ArrayOfAgendaAppend
+syn keyword ArtsMethod ArrayOfAgendaExecute
 syn keyword ArtsMethod AntennaConstantGaussian1D
 syn keyword ArtsMethod AntennaMultiBeamsToPencilBeams
 syn keyword ArtsMethod AntennaOff
@@ -415,6 +417,7 @@ syn keyword ArtsMethod pha_mat_sptFromData
 syn keyword ArtsMethod pha_mat_sptFromMonoData
 syn keyword ArtsMethod pha_mat_sptFromDataDOITOpt
 syn keyword ArtsMethod pndFromdNdD
+syn keyword ArtsMethod pndFromPsd
 syn keyword ArtsMethod pnd_fieldCalcFrompnd_field_raw
 syn keyword ArtsMethod pnd_fieldCalcFromscat_speciesFields
 syn keyword ArtsMethod pnd_fieldExpand1D
@@ -439,6 +442,7 @@ syn keyword ArtsMethod propmat_clearskyZero
 syn keyword ArtsMethod propmat_clearskyForceNegativeToZero
 syn keyword ArtsMethod propmat_clearsky_agenda_checkedCalc
 syn keyword ArtsMethod propmat_clearsky_fieldCalc
+syn keyword ArtsMethod psdMH97
 syn keyword ArtsMethod p_gridDensify
 syn keyword ArtsMethod p_gridFromZRaw
 syn keyword ArtsMethod p_gridFromGasAbsLookup
@@ -655,9 +659,11 @@ syn keyword ArtsVariable disort_is_initialized
 syn keyword ArtsVariable dsrc_coef_dx
 syn keyword ArtsVariable dsrc_xsec_per_species_dx
 syn keyword ArtsVariable diy_dx
-syn keyword ArtsVariable dpnd_dx
+syn keyword ArtsVariable dpnd_data_dx
+syn keyword ArtsVariable dpnd_data_dx_vars
+syn keyword ArtsVariable dpnd_field_dx
 syn keyword ArtsVariable dpropmat_clearsky_dx
-syn keyword ArtsVariable dpsd_dx
+syn keyword ArtsVariable dpsd_data_dx
 syn keyword ArtsVariable dnlte_dx_source
 syn keyword ArtsVariable nlte_dsource_dx
 syn keyword ArtsVariable doit_conv_flag
@@ -761,6 +767,7 @@ syn keyword ArtsVariable met_mm_backend
 syn keyword ArtsVariable met_mm_polarisation
 syn keyword ArtsVariable met_profile_calc_agenda
 syn keyword ArtsVariable ml_ga_history
+syn keyword ArtsVariable molarmass_dry_air
 syn keyword ArtsVariable nlte_quantum_identifiers
 syn keyword ArtsVariable nelem
 syn keyword ArtsVariable ncols
@@ -770,7 +777,6 @@ syn keyword ArtsVariable nbooks
 syn keyword ArtsVariable nshelves
 syn keyword ArtsVariable nvitrines
 syn keyword ArtsVariable nlibraries
-syn keyword ArtsVariable molarmass_dry_air
 syn keyword ArtsVariable nlte_do
 syn keyword ArtsVariable nlte_source
 syn keyword ArtsVariable nlte_source_field
@@ -778,6 +784,8 @@ syn keyword ArtsVariable oem_diagnostics
 syn keyword ArtsVariable oem_errors
 syn keyword ArtsVariable opt_prop_part_agenda
 syn keyword ArtsVariable output_file_format
+syn keyword ArtsVariable particle_bulkprop_field
+syn keyword ArtsVariable particle_bulkprop_names
 syn keyword ArtsVariable particle_masses
 syn keyword ArtsVariable partition_functions
 syn keyword ArtsVariable pha_mat
@@ -786,12 +794,12 @@ syn keyword ArtsVariable pha_mat_spt
 syn keyword ArtsVariable pha_mat_spt_agenda
 syn keyword ArtsVariable pha_mat_sptDOITOpt
 syn keyword ArtsVariable planet_rotation_period
-syn keyword ArtsVariable pnd
 syn keyword ArtsVariable pnd_agenda
+syn keyword ArtsVariable pnd_agenda_input
+syn keyword ArtsVariable pnd_agenda_input_names
+syn keyword ArtsVariable pnd_data
 syn keyword ArtsVariable pnd_field
 syn keyword ArtsVariable pnd_field_raw
-syn keyword ArtsVariable pnd_input
-syn keyword ArtsVariable pnd_input_names
 syn keyword ArtsVariable ppath
 syn keyword ArtsVariable ppath_agenda
 syn keyword ArtsVariable ppath_inside_cloudbox_do
@@ -803,7 +811,7 @@ syn keyword ArtsVariable propmat_clearsky
 syn keyword ArtsVariable propmat_clearsky_agenda
 syn keyword ArtsVariable propmat_clearsky_agenda_checked
 syn keyword ArtsVariable propmat_clearsky_field
-syn keyword ArtsVariable psd
+syn keyword ArtsVariable psd_data
 syn keyword ArtsVariable psd_size_grid
 syn keyword ArtsVariable p_grid
 syn keyword ArtsVariable p_grid_orig
@@ -952,6 +960,7 @@ syn keyword ArtsGroup ArrayOfArrayOfMatrix
 syn keyword ArtsGroup ArrayOfArrayOfScatteringMetaData
 syn keyword ArtsGroup ArrayOfArrayOfSingleScatteringData
 syn keyword ArtsGroup ArrayOfArrayOfSpeciesTag
+syn keyword ArtsGroup ArrayOfArrayOfString
 syn keyword ArtsGroup ArrayOfArrayOfTensor3
 syn keyword ArtsGroup ArrayOfArrayOfTensor6
 syn keyword ArtsGroup ArrayOfArrayOfVector
