@@ -70,10 +70,7 @@ endif
 " Activate my own color scheme
 if version>=600
   set t_Co=256
-"  colorscheme solarized
-"  colorscheme ole
   colorscheme darcula-ole
-" colorscheme default
 endif
 
 
