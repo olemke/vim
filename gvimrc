@@ -1,5 +1,7 @@
 
-if !has("gui_gtk2") && !has("gui_gtk3")
+if has("gui_gtk2") || has("gui_gtk3")
+  set guifont=Inconsolata\ 12
+else
   set guifont=Inconsolata:h14
 endif
 
