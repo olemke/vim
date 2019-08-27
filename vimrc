@@ -42,9 +42,6 @@ if version>=730
   set colorcolumn=80
 endif
 
-"set statusline=%<%F\ %m%r\ %=%-14.(%l,%c%V%)\ %P
-set statusline=%<%F\ %y%m%r\ %=%-14.(%l,%c%V%)\ %P
-
 " Show trailing whitespace
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
@@ -211,10 +208,6 @@ set nofoldenable
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
@@ -237,3 +230,5 @@ set diffopt+=vertical
 "nnoremap <C-h> <C-W>h
 
 let g:clang_format#command = "clang-format-mp-8.0"
+
+let g:airline_theme="jellybeans"
