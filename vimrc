@@ -229,6 +229,4 @@ set diffopt+=vertical
 "nnoremap <C-l> <C-W>l
 "nnoremap <C-h> <C-W>h
 
-let g:clang_format#command = "clang-format-mp-8.0"
-
 let g:airline_theme="jellybeans"
