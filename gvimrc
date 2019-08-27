@@ -1,6 +1,7 @@
 
-"set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
-set guifont=Consolas:h12
+if !has("gui_gtk2") && !has("gui_gtk3")
+  set guifont=Inconsolata:h14
+endif
 
 " Set windows size by columns and lines directly:
 set columns=80 lines=40
