@@ -26,9 +26,6 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "bundle/jedi-vim"]
-	path = bundle/jedi-vim
-	url = https://github.com/davidhalter/jedi-vim.git
 [submodule "bundle/autopep8"]
 	path = bundle/autopep8
 	url = https://github.com/tell-k/vim-autopep8.git
