@@ -1,2 +1,3 @@
-setlocal noexpandtab
+setlocal expandtab
+setlocal shiftwidth=8
 
