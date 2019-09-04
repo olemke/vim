@@ -226,4 +226,5 @@ set diffopt+=vertical
 "nnoremap <C-l> <C-W>l
 "nnoremap <C-h> <C-W>h
 
+let g:airline_powerline_fonts = 1
 let g:airline_theme="jellybeans"
