@@ -219,7 +219,7 @@ let g:autopep8_aggressive=2
 " Jedi settings
 let g:jedi#use_splits_not_buffers = "winwidth"
 
-set diffopt+=vertical
+set diffopt=vertical,filler
 
 "nnoremap <C-j> <C-W>j
 "nnoremap <C-k> <C-W>k
