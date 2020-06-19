@@ -42,6 +42,7 @@ Plug 'mbbill/undotree'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'rhysd/vim-clang-format'
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
@@ -130,6 +131,10 @@ endfunction
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
+
+nmap <leader>F :ClangFormat<CR>
+nmap <leader>f v:ClangFormat<CR>
+vmap <leader>f :ClangFormat<CR>
 
 fun! TrimWhitespace()
     let l:save = winsaveview()
