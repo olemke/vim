@@ -6,7 +6,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ```
 
 You'll get an error message when first opening vim due to the missing
-colorscheme.  Hit `<ENTER>` to ignore the message.  It'll disappear after the
+colorscheme. Hit `<ENTER>` to ignore the message. It'll disappear after the
 initial download of the plugins and a restart of vim.
 
 Install Intellisense extensions:
@@ -28,4 +28,10 @@ coc-python@1.2.9
 coc-texlab
 coc-tsserver
 coc-vimlsp
+```
+
+To install all the extensions listed above, use the following vim command:
+
+```
+:call InstallCocExtensions()
 ```

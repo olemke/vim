@@ -41,6 +41,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall
 endif
 
+fun! InstallCocExtensions()
+    CocInstall coc-clangd coc-css coc-gitignore coc-html coc-json coc-prettier coc-python@1.2.9 coc-texlab coc-tsserver coc-vimlsp
+endfun
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
