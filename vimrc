@@ -144,6 +144,9 @@ nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
 
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>F :call CocAction('format')<CR>
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>f v:ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>f :ClangFormat<CR>
 autocmd FileType c,cpp,objc nmap <leader>F :ClangFormat<CR>

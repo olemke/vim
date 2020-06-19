@@ -23,6 +23,7 @@ coc-css
 coc-gitignore
 coc-html
 coc-json
+coc-prettier
 coc-python@1.2.9
 coc-texlab
 coc-tsserver
