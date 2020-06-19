@@ -56,7 +56,6 @@ Plug 'airblade/vim-rooter'
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
-Plug 'phanviet/vim-monokai-pro'
 Plug 'vim-airline/vim-airline'
 
 call plug#end()
