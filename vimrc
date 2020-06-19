@@ -80,6 +80,10 @@ let g:vrfr_rg = 'true'
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline_powerline_fonts = 1
+
 nmap <TAB> :bnext<CR>
 nmap <S-TAB> :bprev<CR>
 
