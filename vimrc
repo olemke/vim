@@ -43,7 +43,7 @@ endif
 
 fun! InstallCocExtensions()
     CocInstall coc-clangd coc-css coc-gitignore coc-html coc-json coc-prettier
-                \ coc-python@1.2.9 coc-texlab coc-tsserver coc-vimlsp
+                \ coc-python@1.2.9 coc-texlab coc-tsserver coc-vimlsp coc-cmake
 endfun
 
 call plug#begin('~/.vim/plugged')

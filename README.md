@@ -19,6 +19,7 @@ Common extensions:
 
 ```
 coc-clangd
+coc-cmake
 coc-css
 coc-gitignore
 coc-html
