@@ -1,7 +1,8 @@
 syntax on
 
 set guicursor=
-set noshowmatch
+set showmatch
+set noshowmode
 set relativenumber
 set nohlsearch
 set hidden
@@ -19,6 +20,7 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set scrolloff=8
+set showtabline=2
 
 " Give more space for displaying messages.
 set cmdheight=2
