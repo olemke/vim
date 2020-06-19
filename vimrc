@@ -42,7 +42,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 fun! InstallCocExtensions()
-    CocInstall coc-clangd coc-css coc-gitignore coc-html coc-json coc-prettier coc-python@1.2.9 coc-texlab coc-tsserver coc-vimlsp
+    CocInstall coc-clangd coc-css coc-gitignore coc-html coc-json coc-prettier
+                \ coc-python@1.2.9 coc-texlab coc-tsserver coc-vimlsp
 endfun
 
 call plug#begin('~/.vim/plugged')
@@ -102,14 +103,10 @@ nnoremap <Leader><CR> :so ~/.vim/vimrc<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>rp :resize 100<CR>
-nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
+
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-nnoremap <leader>vwm :colorscheme gruvbox<bar>:set background=dark<CR>
-nmap <leader>vtm :highlight Pmenu ctermbg=gray guibg=gray
-
-vnoremap X "_d
 inoremap <C-c> <esc>
 
 function! s:check_back_space() abort
