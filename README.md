@@ -1,14 +1,13 @@
-Install plugin manager:
+Install plugin manager (happens automatically when opening vim):
 
 ```
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-Install vim plugins with
-```
-:PlugInstall
-```
+You'll get an error message when first opening vim due to the missing
+colorscheme.  Hit `<ENTER>` to ignore the message.  It'll disappear after the
+initial download of the plugins and a restart of vim.
 
 Install Intellisense extensions:
 
