@@ -142,9 +142,9 @@ nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
 
-nmap <leader>F :ClangFormat<CR>
-nmap <leader>f v:ClangFormat<CR>
-vmap <leader>f :ClangFormat<CR>
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>f v:ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>f :ClangFormat<CR>
+autocmd FileType c,cpp,objc nmap <leader>F :ClangFormat<CR>
 
 fun! TrimWhitespace()
     let l:save = winsaveview()
