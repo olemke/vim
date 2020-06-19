@@ -25,6 +25,7 @@ coc-gitignore
 coc-html
 coc-json
 coc-python@1.2.9
+coc-texlab
 coc-tsserver
 coc-vimlsp
 ```
