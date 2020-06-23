@@ -59,6 +59,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'airblade/vim-rooter'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'roxma/vim-tmux-clipboard'
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
