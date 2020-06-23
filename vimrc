@@ -21,6 +21,7 @@ set undofile
 set incsearch
 set scrolloff=8
 set showtabline=2
+set mouse=a
 
 " Give more space for displaying messages.
 set cmdheight=2
