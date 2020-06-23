@@ -109,6 +109,8 @@ nnoremap <Leader>rp :resize 100<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+nnoremap <Leader>y y:call SendViaOSC52(getreg('"'))<CR>
+
 inoremap <C-c> <esc>
 
 function! s:check_back_space() abort
