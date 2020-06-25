@@ -61,6 +61,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'airblade/vim-rooter'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'roxma/vim-tmux-clipboard'
+Plug 'tomtom/tcomment_vim'
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
