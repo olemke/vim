@@ -65,6 +65,7 @@ Plug 'tomtom/tcomment_vim'
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
+"Plug 'edkolev/tmuxline.vim'
 
 call plug#end()
 
