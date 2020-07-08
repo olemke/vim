@@ -146,6 +146,7 @@ nmap <leader>g] <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
 nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
 nnoremap <leader>cr :CocRestart
+nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
