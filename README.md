@@ -37,7 +37,7 @@ coc-tsserver
 coc-vimlsp
 ```
 
-To install all the extensions listed above, use the following vim command:
+To install all the common extensions listed above, use the following command:
 
 ```
 :call InstallCocExtensions()
