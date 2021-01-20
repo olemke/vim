@@ -1,4 +1,8 @@
-Install plugin manager (happens automatically when opening vim):
+Clone this repository in your home directory and name it `.vim`:
+
+git clone https://github.com/olemke/vim.git .vim
+
+Opening vim will automatically install the plugin manager by using this command:
 
 ```
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
