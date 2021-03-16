@@ -22,6 +22,7 @@ set incsearch
 set scrolloff=4
 set showtabline=2
 set mouse=a
+set termguicolors
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -62,19 +63,18 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'tomtom/tcomment_vim'
 
+Plug 'joshdick/onedark.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
 "Plug 'edkolev/tmuxline.vim'
 
 call plug#end()
 
-let g:gruvbox_contrast_dark='medium'
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
-let g:gruvbox_invert_selection='0'
-colorscheme gruvbox
+colorscheme onedark
 set background=dark
 
 if executable('rg')
@@ -89,6 +89,7 @@ let g:vrfr_rg = 'true'
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
+let g:airline_theme='onedark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline_powerline_fonts = 1
